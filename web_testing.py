@@ -1,39 +1,30 @@
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-
 import pytest
 
-class heroku_testing:
+"""
+Required package:       pip install pytest-selenium
+Execution:              pytest --driver chrome pytest_studies.py
+"""
 
-    def test_open_url(url, title):
-        browser = webdriver.Chrome()
-        browser.get(url)
-        assert title in browser.title
-        browser.close()
-
-    test_open_url("https://the-internet.herokuapp.com", "The Internet")
-
-
+#@pytest.fixture(scope="session")
+#def open_url():
+#    selenium.get('https://the-internet.herokuapp.com')
 
 """
-class front_end_testing():
-    def setup(self):
-        self.driver = webdriver.Chrome()
+def test_url(selenium):
+    selenium.get('https://the-internet.herokuapp.com')
+    assert "The Internet" in selenium.title
 
-    def web_testing.py():
-
-
-driver = webdriver.Chrome()
-driver.get("https://the-internet.herokuapp.com")
-assert "The Internet" in driver.title
-driver.close()
-
-
-
-elem = driver.find_element_by_name("q")
-elem.clear()
-elem.send_keys("pycon")
-elem.send_keys(Keys.RETURN)
-assert "No results found." not in driver.page_source
-driver.close()
+def test_broken_images(selenium):
+    selenium.get('https://the-internet.herokuapp.com')
+    selenium.find_element_by_partial_link_text('Broken Images').click()
+    assert "The Internet" in selenium.title
 """
+def test_checkbox(selenium):
+    selenium.get('https://the-internet.herokuapp.com')
+    selenium.find_element_by_partial_link_text('Checkboxes').click()
+    selenium.find_element_by_xpath('//*[@id="checkboxes"]/input[1]').click()
+    selenium.find_element_by_xpath('//*[@id="checkboxes"]/input[1]').click()
+    selenium.find_element_by_xpath('//*[@id="checkboxes"]/input[1]').click()
+
+
+
