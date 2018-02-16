@@ -3,15 +3,16 @@ from selenium.webdriver.common.keys import Keys
 
 import pytest
 
-def test_server_connect():
-    driver = webdriver.Chrome()
-    driver.get("https://the-internet.herokuapp.com/")
-    assert "The Internet" in driver.title
-    driver.close()
+class heroku_testing:
 
-def broken_images():
+    def test_open_url(url, title):
+        browser = webdriver.Chrome()
+        browser.get(url)
+        assert title in browser.title
+        browser.close()
 
-test_server_connect()
+    test_open_url("https://the-internet.herokuapp.com", "The Internet")
+
 
 
 """
